@@ -90,7 +90,8 @@ class ChangeTextTest {
         device.findObject(By.res(packageName, "userInput")).text = textToNewActivity
         device.findObject(By.res(packageName, "buttonActivity")).click()
 
-        // добавить функцию ожидания activity
+
+        device.wait(Until.hasObject(By.res(packageName, "text")), TIMEOUT) // ожидание activity
         val result =
             device.findObject(By.res(packageName, "text")).text
         assertEquals(result, textToNewActivity)
